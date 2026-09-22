@@ -1,0 +1,29 @@
+===BEGIN DNS CHALLENGE SUBMISSION===
+student_id: 6705142030
+assigned_zone: crimson.lab
+timestamp: 2026-09-22T03:59:21Z
+---[zone file: /etc/bind/db.crimson.lab]---
+$TTL 86400
+@   IN  SOA ns1.crimson.lab. admin.crimson.lab. (
+            2026092201 ; Serial
+            3600       ; Refresh
+            1800       ; Retry
+            604800     ; Expire
+            86400 )    ; Minimum TTL
+
+    IN  NS  ns1.crimson.lab.
+
+ns1     IN  A   192.168.167.1
+www     IN  A   192.168.167.39
+mail    IN  A   192.168.167.72
+portal  IN  A   192.168.167.105
+---[named-checkzone]---
+zone crimson.lab/IN: loaded serial 2026092201
+OK
+---[dig @127.0.0.1 www.crimson.lab]---
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 14537
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+; EDNS: version: 0, flags:; udp: 1232
+;www.crimson.lab.		IN	A
+www.crimson.lab.	86400	IN	A	192.168.167.39
+===END DNS CHALLENGE SUBMISSION===
